@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sandbox Manager</title>
+
+    <!-- Strict CSP-ish -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+    />
+
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="header-bar">
+        <h1>Sandbox Manager</h1>
+        <div class="header-status">
+          MODE:
+          <span id="mode-label">idle</span>
+        </div>
+      </div>
+
+      <p>Launch and control a disposable browser sandbox on top of Docker.</p>
+
+      <div class="controls-row">
+        <button id="btn-start" class="start">Start (default)</button>
+        <button id="btn-stop" class="stop">Stop</button>
+        <button id="btn-reset" class="reset">Reset</button>
+        <button id="btn-clear-logs" class="alt">Clear Logs</button>
+      </div>
+
+      <div class="presets">
+        <label for="preset-select">Preset</label>
+        <select id="preset-select">
+          <option value="safe">Safe Browsing</option>
+          <option value="malware">Malware Behavior Testing</option>
+          <option value="full">Full Disposable Session</option>
+          <option value="proxy">Proxy Inspection Mode</option>
+        </select>
+        <button id="btn-start-preset" class="alt">
+          Start with preset
+        </button>
+      </div>
+
+      <div id="status">Status: idle</div>
+
+      <div class="section-title">Logs</div>
+      <div id="logs"></div>
+    </div>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>
